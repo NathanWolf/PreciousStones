@@ -620,6 +620,12 @@ public class PSEntityListener implements Listener {
                     if (arrow.getShooter() instanceof Player) {
                         attacker = (Player) arrow.getShooter();
                     }
+                } else if (sub.getDamager() instanceof Trident) {
+                	Trident trident = (Trident) sub.getDamager();
+
+                    if (trident.getShooter() instanceof Player) {
+                        attacker = (Player) trident.getShooter();
+                    }
                 }
 
                 if (attacker != null) {
