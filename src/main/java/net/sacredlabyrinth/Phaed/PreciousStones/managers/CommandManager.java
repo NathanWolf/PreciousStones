@@ -1349,8 +1349,11 @@ public final class CommandManager implements CommandExecutor {
                                     iter.remove();
                                 }
                             }
-
-                            plugin.getCommunicationManager().showFieldDetails(player, fields);
+                            
+                            if (fields.isEmpty())
+                                plugin.getCommunicationManager().showFieldOwner(player, block);
+                            else
+                                plugin.getCommunicationManager().showFieldDetails(player, fields);
                         }
 
                         return true;
