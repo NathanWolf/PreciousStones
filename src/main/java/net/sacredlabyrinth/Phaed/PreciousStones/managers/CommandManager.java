@@ -1026,7 +1026,8 @@ public final class CommandManager implements CommandExecutor {
                             Field field = plugin.getForceFieldManager().getOneAllowedField(block, player, FieldFlag.SNITCH);
 
                             if (field != null) {
-                                plugin.getCommunicationManager().showSnitchList(player, field);
+                                if(!plugin.getCommunicationManager().showSnitchList(player, field))
+                                    ChatHelper.send(sender, "snitchEmpty");
                             } else {
                                 ChatHelper.send(sender, "notPointingAtSnitch");
                             }
