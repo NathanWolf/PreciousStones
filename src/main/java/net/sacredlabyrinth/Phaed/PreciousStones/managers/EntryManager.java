@@ -10,6 +10,7 @@ import net.sacredlabyrinth.Phaed.PreciousStones.helpers.ChatHelper;
 import net.sacredlabyrinth.Phaed.PreciousStones.helpers.StackHelper;
 import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.EntityEffect;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -133,8 +134,8 @@ public final class EntryManager {
                     if (plugin.getPermissionsManager().has(player, "preciousstones.benefit.heal")) {
                         if (!hasHeal) {
                             if (FieldFlag.HEAL.applies(field, player)) {
-                                if (player.getHealth() < 20 && player.getHealth() > 0) {
-                                    player.setHealth((int) healthCheck(player.getHealth() + field.getSettings().getHeal()));
+                                if (player.getHealth() < playerMaxHealth(player) && player.getHealth() > 0) {
+                                    player.setHealth((int) healthCheck(player.getHealth() + field.getSettings().getHeal(), player));
                                     plugin.getCommunicationManager().showHeal(player);
                                     hasHeal = true;
                                 }
@@ -176,7 +177,7 @@ public final class EntryManager {
                             if (!hasDamage) {
                                 if (FieldFlag.DAMAGE.applies(field, player)) {
                                     if (player.getHealth() > 0) {
-                                        double health = healthCheck(player.getHealth() - field.getSettings().getDamage());
+                                        double health = healthCheck(player.getHealth() - field.getSettings().getDamage(), player);
                                         player.setHealth((int) Math.max(health, 0));
 
                                         if (health <= 1) {
@@ -708,14 +709,18 @@ public final class EntryManager {
 
         return false;
     }
+    
+    private double playerMaxHealth(Player p) {
+		return p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
+	}
 
-    private double healthCheck(double health) {
+    private double healthCheck(double health, Player p) {
         if (health < 0) {
             return 0;
         }
 
-        if (health > 20) {
-            return 20;
+        if (health > playerMaxHealth(p)) {
+            return playerMaxHealth(p);
         }
 
         return health;
