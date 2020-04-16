@@ -39,7 +39,7 @@ force-field-blocks:
   buyable: true
   cuboid: true
 - title: City Plot
-  block: quartz_ore
+  block: nether_quartz_ore
   radius: 20
   custom-height: 15
   meta-name: '&bCity Plot'
@@ -160,7 +160,7 @@ force-field-blocks:
   protect-villagers: true
   cuboid: true
 - title: Creature Repeller
-  block: web
+  block: cobweb
   radius: 20
   meta-name: '&bCreature Repeller'
   meta-autoset: true
@@ -191,7 +191,7 @@ force-field-blocks:
   mixing-group: 1
   cuboid: true
 - title: Proximity Snitch
-  block: noteblock
+  block: note_block
   radius: 5
   meta-name: '&1Proximity Snitch'
   meta-autoset: true
@@ -205,7 +205,7 @@ force-field-blocks:
   mixing-group: 2
   cuboid: true
 - title: Jack-o-Death
-  block: lit_pumpkin
+  block: jack_o_lantern
   radius: 5
   damage: 4
   meta-name: '&4Jack-o-Death'
@@ -220,7 +220,7 @@ force-field-blocks:
   no-player-place: true
   mixing-group: 2
 - title: The Shocker
-  block: monster_egg
+  block: slime_block
   radius: 0
   custom-height: 3
   meta-name: '&4The Shocker'
@@ -293,7 +293,7 @@ force-field-blocks:
   cuboid: true
   enable-with-redstone: true
 - title: Translocator
-  block: 'red_mushroom_block:14'
+  block: red_mushroom_block
   radius: 8
   custom-volume: 5000
   meta-name: '&9Translocator'
@@ -349,7 +349,7 @@ force-field-blocks:
   enable-with-redstone: true
   no-fall-damage: true
 - title: Mild Forester
-  block: 'leaves:4'
+  block: oak_leaves
   radius: 20
   custom-height: 15
   meta-name: '&2Mild Forester'
@@ -389,7 +389,7 @@ force-field-blocks:
   no-owner: true
   no-conflict: false
 - title: Redwood Forester
-  block: 'leaves:5'
+  block: acacia_leaves
   radius: 20
   custom-height: 15
   meta-name: '&2Redwood Forester'
@@ -429,7 +429,7 @@ force-field-blocks:
   no-owner: true
   no-conflict: false
 - title: Jungle Forester
-  block: 'leaves:6'
+  block: jungle_leaves
   radius: 20
   custom-height: 15
   meta-name: '&2Jungle Forester'
@@ -468,7 +468,7 @@ force-field-blocks:
   no-owner: true
   no-conflict: false
 - title: Birch Forester
-  block: 'leaves:7'
+  block: birch_leaves
   radius: 20
   custom-height: 15
   meta-name: '&2Birch Forester'
