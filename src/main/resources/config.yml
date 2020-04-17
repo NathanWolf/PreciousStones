@@ -135,7 +135,7 @@ force-field-blocks:
   - '&eReverts grief in an area'
   - '&eIt covers an area of 20 radius'
   - '&eWith a max height of 15'
-  allow-grief: [37, 38, 39, 40]
+  allow-grief: [DANDELION, POPPY, BROWN_MUSHROOM, RED_MUSHROOM]
   grief-revert: true
   grief-revert-safety: true
   ?welcome-message: true
