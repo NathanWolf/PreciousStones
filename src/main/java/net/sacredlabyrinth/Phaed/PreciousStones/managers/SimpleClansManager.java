@@ -4,6 +4,7 @@ import net.sacredlabyrinth.Phaed.PreciousStones.PreciousStones;
 import net.sacredlabyrinth.Phaed.PreciousStones.field.Field;
 import net.sacredlabyrinth.phaed.simpleclans.SimpleClans;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -69,10 +70,13 @@ public final class SimpleClansManager {
      */
     public void clanAnnounce(String playerName, String message) {
         if (hasSimpleClans()) {
-            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cp = simpleClans.getClanManager().getClanPlayer(playerName);
-
-            if (cp != null) {
-                cp.getClan().clanAnnounce("PreciousStones", message);
+        	OfflinePlayer player = Bukkit.getOfflinePlayer(playerName);
+	        	if (player != null) {
+	            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cp = simpleClans.getClanManager().getClanPlayer(player);
+	
+	            if (cp != null) {
+	                cp.getClan().clanAnnounce("PreciousStones", message);
+	            }
             }
         }
     }
@@ -101,12 +105,15 @@ public final class SimpleClansManager {
      */
     public boolean isAnyOnline(String playerName) {
         if (hasSimpleClans()) {
-            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cp = simpleClans.getClanManager().getClanPlayer(playerName);
-
-            if (cp != null) {
-                if (cp.getClan().isAnyOnline()) {
-                    return true;
-                }
+        	OfflinePlayer player = Bukkit.getOfflinePlayer(playerName);
+        	if (player != null) {
+	            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cp = simpleClans.getClanManager().getClanPlayer(player);
+	
+	            if (cp != null) {
+	                if (cp.getClan().isAnyOnline()) {
+	                    return true;
+	                }
+	            }
             }
         }
 
@@ -122,19 +129,23 @@ public final class SimpleClansManager {
      */
     public boolean inWar(Field field, String offenderName) {
         if (hasSimpleClans()) {
-            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cp = simpleClans.getClanManager().getClanPlayer(offenderName);
-            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cpOwner = simpleClans.getClanManager().getClanPlayer(field.getOwner());
-
-            if (cp != null && cpOwner != null) {
-                List<net.sacredlabyrinth.phaed.simpleclans.Clan> warringClans = cp.getClan().getWarringClans();
-
-                String ownerClan = cpOwner.getTag();
-
-                for (net.sacredlabyrinth.phaed.simpleclans.Clan warring : warringClans) {
-                    if (ownerClan.equals(warring.getTag())) {
-                        return true;
-                    }
-                }
+        	OfflinePlayer p = Bukkit.getOfflinePlayer(offenderName);
+        	OfflinePlayer pOwner = Bukkit.getOfflinePlayer(field.getOwner());
+        	if (p != null && pOwner != null) {
+	            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cp = simpleClans.getClanManager().getClanPlayer(p);
+	            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cpOwner = simpleClans.getClanManager().getClanPlayer(pOwner);
+	
+	            if (cp != null && cpOwner != null) {
+	                List<net.sacredlabyrinth.phaed.simpleclans.Clan> warringClans = cp.getClan().getWarringClans();
+	
+	                String ownerClan = cpOwner.getTag();
+	
+	                for (net.sacredlabyrinth.phaed.simpleclans.Clan warring : warringClans) {
+	                    if (ownerClan.equals(warring.getTag())) {
+	                        return true;
+	                    }
+	                }
+	            }
             }
         }
 
@@ -151,10 +162,13 @@ public final class SimpleClansManager {
             Player player = plugin.getServer().getPlayerExact(playerName);
 
             if (player != null) {
-                net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cpOwner = simpleClans.getClanManager().getClanPlayer(owner);
-
-                if (cpOwner != null) {
-                    return cpOwner.isAlly(player);
+            	OfflinePlayer pOwner = Bukkit.getOfflinePlayer(owner);
+            	if (pOwner != null) {
+	                net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cpOwner = simpleClans.getClanManager().getClanPlayer(pOwner);
+	
+	                if (cpOwner != null) {
+	                    return cpOwner.isAlly(player);
+	                }
                 }
             }
         }
@@ -170,13 +184,17 @@ public final class SimpleClansManager {
      */
     public boolean isClanMate(String playerOne, String playerTwo) {
         if (hasSimpleClans()) {
-            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cp1 = simpleClans.getClanManager().getClanPlayer(playerOne);
-            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cp2 = simpleClans.getClanManager().getClanPlayer(playerTwo);
-
-            if (cp1 != null && cp2 != null) {
-                if (cp1.getClan().equals(cp2.getClan())) {
-                    return true;
-                }
+        	OfflinePlayer p1 = Bukkit.getOfflinePlayer(playerOne);
+        	OfflinePlayer p2 = Bukkit.getOfflinePlayer(playerTwo);
+        	if (p1 != null && p2 != null) {
+	            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cp1 = simpleClans.getClanManager().getClanPlayer(p1);
+	            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cp2 = simpleClans.getClanManager().getClanPlayer(p2);
+	
+	            if (cp1 != null && cp2 != null) {
+	                if (cp1.getClan().equals(cp2.getClan())) {
+	                    return true;
+	                }
+	            }
             }
         }
 
@@ -192,12 +210,15 @@ public final class SimpleClansManager {
      */
     public boolean isInClan(String playerName, String clanName) {
         if (hasSimpleClans()) {
-            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cp = simpleClans.getClanManager().getClanPlayer(playerName);
-
-            if (cp != null) {
-                if (cp.getTag().equals(clanName)) {
-                    return true;
-                }
+        	OfflinePlayer player = Bukkit.getOfflinePlayer(playerName);
+        	if (player != null) {
+	            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cp = simpleClans.getClanManager().getClanPlayer(player);
+	
+	            if (cp != null) {
+	                if (cp.getTag().equals(clanName)) {
+	                    return true;
+	                }
+	            }
             }
         }
 
@@ -210,10 +231,13 @@ public final class SimpleClansManager {
      */
     public String getClan(String playerName) {
         if (hasSimpleClans()) {
-            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cp = simpleClans.getClanManager().getClanPlayer(playerName);
-
-            if (cp != null) {
-                return cp.getTag();
+        	OfflinePlayer player = Bukkit.getOfflinePlayer(playerName);
+        	if (player != null) {
+	            net.sacredlabyrinth.phaed.simpleclans.ClanPlayer cp = simpleClans.getClanManager().getClanPlayer(player);
+	
+	            if (cp != null) {
+	                return cp.getTag();
+	            }
             }
         }
 
