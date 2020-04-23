@@ -1026,7 +1026,8 @@ public final class CommandManager implements CommandExecutor {
                             Field field = plugin.getForceFieldManager().getOneAllowedField(block, player, FieldFlag.SNITCH);
 
                             if (field != null) {
-                                plugin.getCommunicationManager().showSnitchList(player, field);
+                                if(!plugin.getCommunicationManager().showSnitchList(player, field))
+                                    ChatHelper.send(sender, "snitchEmpty");
                             } else {
                                 ChatHelper.send(sender, "notPointingAtSnitch");
                             }
@@ -1349,8 +1350,11 @@ public final class CommandManager implements CommandExecutor {
                                     iter.remove();
                                 }
                             }
-
-                            plugin.getCommunicationManager().showFieldDetails(player, fields);
+                            
+                            if (fields.isEmpty())
+                                plugin.getCommunicationManager().showFieldOwner(player, block);
+                            else
+                                plugin.getCommunicationManager().showFieldDetails(player, fields);
                         }
 
                         return true;
