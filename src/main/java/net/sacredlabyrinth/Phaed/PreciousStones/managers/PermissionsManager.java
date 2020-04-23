@@ -8,6 +8,8 @@ import com.nijiko.permissions.PermissionHandler;
 import com.nijikokun.bukkit.Permissions.Permissions;
 import com.platymuus.bukkit.permissions.Group;
 import com.platymuus.bukkit.permissions.PermissionsPlugin;
+import com.sk89q.worldedit.bukkit.WorldEditPlugin;
+
 import net.gravitydevelopment.anticheat.api.AntiCheatAPI;
 import net.gravitydevelopment.anticheat.check.CheckType;
 import net.milkbowl.vault.economy.Economy;
@@ -42,6 +44,7 @@ public final class PermissionsManager {
     private Lockette lockette = null;
     private PreciousStones plugin;
     private mcMMO mcmmo = null;
+	private WorldEditPlugin worldEdit = null;
 
     /**
      *
@@ -54,6 +57,7 @@ public final class PermissionsManager {
         detectLWC();
         detectLockette();
         detectMcMMO();
+        detectWorldEdit();
 
         try {
             Class.forName("net.milkbowl.vault.permission.Permission");
@@ -64,6 +68,14 @@ public final class PermissionsManager {
             //SimpleClans.log("[PreciousStones] Vault.jar not found. No economy support.");
             //no need to spam everyone who doesnt use vault
         }
+    }
+    
+    private void detectWorldEdit() {
+    	Plugin p = plugin.getServer().getPluginManager().getPlugin("WorldEdit");
+    	
+    	if (p != null) {
+    		worldEdit = (WorldEditPlugin) p;
+    	}
     }
 
     private void detectMcMMO() {
@@ -389,6 +401,10 @@ public final class PermissionsManager {
         }
 
         return false;
+    }
+    
+    public boolean hasWorldEdit() {
+    	return worldEdit != null;
     }
 
     public boolean hasMcMMO() {

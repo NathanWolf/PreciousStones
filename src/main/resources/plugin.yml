@@ -5,7 +5,7 @@ version: ${project.version}
 api-version: 1.15
 dev-url: http://dev.bukkit.org/server-mods/preciousstones/
 load: 'postworld'
-softdepend: [Permissions, PermissionsBukkit, SimpleClans, Vault, CombatTag, WorldGuard, LWC, Lockette, mcMMO, SCCore]
+softdepend: [Permissions, PermissionsBukkit, SimpleClans, Vault, CombatTag, WorldGuard, LWC, Lockette, mcMMO, SCCore, WorldEdit]
 commands:
   ps:
     description: All of the PreciousStones commands

@@ -519,6 +519,7 @@ settings:
   disable-field-place-while-creative: false
   disable-ground-info: false
   disable-simpleclans-hook: false
+  disable-worldedit-hook: true
   drop-on-delete: true
   fence-max-depth: 50
   global-field-limit: 1000000

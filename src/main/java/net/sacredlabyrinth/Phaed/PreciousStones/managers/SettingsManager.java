@@ -125,6 +125,7 @@ public final class SettingsManager {
     private boolean disableAlertsForAdmins;
     private boolean disableBypassAlertsForAdmins;
     private boolean disableSimpleClanHook;
+    private boolean disableWorldEditHook;
     private boolean offByDefault;
     private boolean useIdInSnitches;
     private int fenceMaxDepth;
@@ -254,6 +255,7 @@ public final class SettingsManager {
         preventRemovalIfPlayerInField = loadBoolean("settings.prevent-removal-if-player-in-field");
         commandsToRentBuy = loadBoolean("settings.use-commands-to-rent");
         disableSimpleClanHook = loadBoolean("settings.disable-simpleclans-hook");
+        disableWorldEditHook = loadBoolean("settings.disable-worldedit-hook");
         maxSizeTranslocation = loadInt("settings.max-size-translocation");
         maxSizeTranslocationForRedstone = loadInt("settings.max-size-translocation-for-redstone");
         version = loadInt("settings.version");
@@ -1415,6 +1417,10 @@ public final class SettingsManager {
     public void setMaxSizeTranslocationForRedstone(int maxSizeTranslocationForRedstone) {
         this.maxSizeTranslocationForRedstone = maxSizeTranslocationForRedstone;
     }
+    
+    public boolean isDisableWorldEditHook() {
+		return disableWorldEditHook;
+	}
 
     public boolean isDisableSimpleClanHook() {
         return disableSimpleClanHook;
