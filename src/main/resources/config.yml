@@ -25,6 +25,7 @@ force-field-blocks:
   ?allowed-can-break: true
   ?welcome-message: true
   ?farewell-message: true
+  ?prevent_spawn_egg: true
   ?prevent-portal-enter: true
   ?prevent-portal-destination: true
   ?prevent-portal-create: true
@@ -66,6 +67,14 @@ force-field-blocks:
   - jungle_fence_gate
   - acacia_fence_gate
   - dark_oak_fence_gate
+  - spruce_trapdoor
+  - birch_trapdoor
+  - jungle_trapdoor
+  - acacia_trapdoor
+  - dark_oak_trapdoor
+  - iron_trapdoor
+  - repeater
+  - comparator
   - chest
   - trapped_chest
   - anvil
@@ -102,6 +111,7 @@ force-field-blocks:
   protect-inventories: true
   prevent-flow: true
   ?prevent-teleport: true
+  ?prevent_spawn_egg: true
   protect-crops: true
   ?allowed-can-break: true
   ?welcome-message: true
