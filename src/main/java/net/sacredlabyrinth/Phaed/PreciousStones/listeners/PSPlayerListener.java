@@ -541,6 +541,24 @@ public class PSPlayerListener implements Listener {
                 }
             }
         }
+        
+        // -------------------------------------------------------------------------------- trying to spawn mobs/animals with spawn egg
+
+		if (is.getType().name().contains("_EGG")) {
+			block = player.getLocation().getBlock();
+			if (!plugin.getPermissionsManager().has(player, "preciousstones.bypass.use")) {
+				Field useField = plugin.getForceFieldManager().getEnabledSourceField(block.getLocation(), FieldFlag.PREVENT_SPAWN_EGG);
+
+				if (useField != null) {
+					if (FieldFlag.PREVENT_SPAWN_EGG.applies(useField, player)) {
+						plugin.getCommunicationManager().warnUse(player, block, useField);
+						event.setCancelled(true);
+						return;
+					}
+				}
+			}
+			block = event.getClickedBlock();
+		}
 
         // -------------------------------------------------------------------------------- trying to put out a fire
 
