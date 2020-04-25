@@ -67,6 +67,7 @@ force-field-blocks:
   - jungle_fence_gate
   - acacia_fence_gate
   - dark_oak_fence_gate
+  - oak_trapdoor
   - spruce_trapdoor
   - birch_trapdoor
   - jungle_trapdoor
