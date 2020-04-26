@@ -294,9 +294,6 @@ public final class ForceFieldManager {
         // remove players inside field if it has PREVENT_ENTRY and they are not allowed
         
         if (field.hasFlag(FieldFlag.PREVENT_ENTRY)) {
-			int radius = field.getLongestSide();
-			if (field.getHeight() > radius)
-				radius = field.getHeight();
 			for (Entity en : player.getNearbyEntities(field.getRadius()+5, field.getHeight()+5, field.getRadius()+5)) {
 				if (en instanceof Player) {
 					Player near = (Player) en;
