@@ -499,7 +499,9 @@ public class PSBlockListener implements Listener {
 
         if (plugin.getSettingsManager().isDisableBreakWhileCreative()) {
             if (player.getGameMode().equals(GameMode.CREATIVE)) {
-                return false;
+            	ChatHelper.send(player, "cannotBreakFieldInCreative");
+            	event.setCancelled(true);
+                return true;
             }
         }
 
