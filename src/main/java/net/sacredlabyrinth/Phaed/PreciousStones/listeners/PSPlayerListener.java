@@ -544,7 +544,7 @@ public class PSPlayerListener implements Listener {
         
         // -------------------------------------------------------------------------------- trying to spawn mobs/animals with spawn egg
 
-		if (is.getType().name().contains("_EGG")) {
+		if (is.getItemMeta() instanceof SpawnEggMeta) {
 			block = player.getLocation().getBlock();
 			if (!plugin.getPermissionsManager().has(player, "preciousstones.bypass.use")) {
 				Field useField = plugin.getForceFieldManager().getEnabledSourceField(block.getLocation(), FieldFlag.PREVENT_SPAWN_EGG);
